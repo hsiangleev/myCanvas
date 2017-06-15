@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #aaa;
+		}
+	</style>
+	<script>
+		window.onload=function () {
+			var cas=document.getElementById("can");
+			var ctx=cas.getContext("2d");
+			// ctx.fillStyle="#FF0000";
+			// ctx.fillRect(0,0,300,300);
+			ctx.strokeStyle="red";
+			ctx.lineWidth=20; 	//线宽
+
+			//三角形
+			// ctx.moveTo(250,20);
+			// ctx.lineTo(400,400);
+			// ctx.lineTo(100,400);
+			
+			//矩形
+			ctx.moveTo(30,30);
+			ctx.lineTo(270,30);
+			ctx.lineTo(270,270);
+			ctx.lineTo(30,270);
+
+
+			ctx.closePath();
+			ctx.stroke();
+			console.log(ctx);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="can"  width="500" height="500">
+		您的浏览器不支持
+	</canvas>
+</body>
+</html>

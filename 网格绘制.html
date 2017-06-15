@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="can" width="500" height="500"></canvas>
+
+	<script>
+		var cvs=document.getElementById("can");
+		var ctx=cvs.getContext("2d");
+		for(var i=0;i<510;i+=10){
+			ctx.moveTo(0,i);
+			ctx.lineTo(500,i);
+			ctx.stroke();
+		}
+		for(var j=0;j<510;j+=10){
+			ctx.moveTo(j,0);
+			ctx.lineTo(j,500);
+			ctx.stroke();
+		}
+	</script>
+
+</body>
+</html>

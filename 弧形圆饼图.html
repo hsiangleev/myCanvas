@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		ctx.moveTo(250,0);
+		ctx.strokeStyle="red";
+		ctx.lineTo(250,500);
+		ctx.moveTo(0,250);
+		ctx.lineTo(500,250);
+		ctx.stroke();
+
+
+		var x=250,y=250;
+		var r=150;
+		var star=-Math.PI/2;
+		var color=["red","blue","green","yellow","pink"];
+		var step=Math.PI*2/color.length;	//步长
+
+		for (var i = 0; i < color.length; i++) {
+			ctx.beginPath();
+			ctx.fillStyle=color[i];
+			ctx.moveTo(x,y);
+			ctx.arc(x,y,r,star+step*i,star+step*(i+1));
+			ctx.fill();
+		}
+		
+	</script>
+</body>
+</html>

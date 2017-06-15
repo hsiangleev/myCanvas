@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500">
+		
+	</canvas>
+
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+		// ctx.arc(300,300,100,0,1*Math.PI);
+		// ctx.stroke();
+
+		//圆弧
+		// ctx.arc(250,250,150,-0.5*Math.PI,0.25*Math.PI);
+		// ctx.stroke();
+
+		// ctx.moveTo(250,0);
+		// ctx.strokeStyle="red";
+		// ctx.lineTo(250,500);
+
+		// ctx.moveTo(0,250);
+		// ctx.lineTo(500,250);
+
+		// ctx.moveTo(250,250);
+		// ctx.lineTo(400,400);
+		// ctx.stroke();
+
+		//扇形
+		// ctx.moveTo(250,250);
+		// ctx.fillStyle="#0c0";
+		// ctx.arc(250,250,150,0,Math.PI/3);
+		// ctx.fill();
+		
+		ctx.moveTo(250,250);
+		ctx.strokeStyle="red";
+		ctx.arc(250,250,150,0,Math.PI/3);
+		ctx.closePath();
+		ctx.stroke();
+	</script>
+	</script>
+
+</body>
+</html>

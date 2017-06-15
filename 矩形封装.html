@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="can" width="500" height="500"></canvas>
+
+	<script>
+		var cas=document.getElementById("can");
+		var cxt=cas.getContext("2d");
+
+		//函数封装
+		// function myRecet(x,y,width,height,lineWidth,strokeStyle) {
+		// 	cxt.strokeStyle=strokeStyle;
+		// 	cxt.lineWidth=lineWidth;
+		// 	cxt.moveTo(x,y);
+		// 	cxt.lineTo(x,y+width);
+		// 	cxt.lineTo(x+height,y+width);
+		// 	cxt.lineTo(x+height,y);
+		// 	cxt.closePath();
+		// 	cxt.stroke();
+		// }
+
+		// myRecet(50,50,200,200,10,"red");
+		// cxt.beginPath();
+		// myRecet(220,220,200,200,10,"#0c0");
+
+		//对象封装
+		function MyRecet(cxt,x,y,width,height,lineWidth,strokeStyle){
+			this.cxt=cxt;
+			this.x=x;
+			this.y=y;
+			this.strokeStyle=strokeStyle;
+			this.lineWidth=lineWidth;
+			this.width=width;
+			this.height=height;
+		}
+		MyRecet.prototype={
+			constructor:MyRecet,
+			drow:function () {
+				this.cxt.beginPath();
+				this.cxt.strokeStyle=this.strokeStyle;
+				this.cxt.lineWidth=this.lineWidth;
+				this.cxt.moveTo(this.x,this.y);
+				this.cxt.lineTo(this.x,this.y+this.width);
+				this.cxt.lineTo(this.x+this.height,this.y+this.width);
+				this.cxt.lineTo(this.x+this.height,this.y);
+				this.cxt.closePath();
+				this.cxt.stroke();
+			}
+		}
+		var myDrow=new MyRecet(cxt,50,50,200,160,15,"skyblue");
+		myDrow.drow();
+		var myDrow1=new MyRecet(cxt,250,250,200,160,15,"blue");
+		myDrow1.drow();
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="400" height="400">111</canvas>
+
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+
+		function Coordinate(){
+			this.len={
+				top:20,
+				bottom:20,
+				left:20,
+				right:20
+			},
+			this.leftTop={
+				x:this.len.left,
+				y:this.len.top
+			},
+			this.point={
+				x:this.len.left,
+				y:cvs.height-this.len.bottom
+			},
+			this.rightBottom={
+				x:cvs.width-this.len.right,
+				y:cvs.height-this.len.bottom
+			},
+			this.Arrow={
+				width:15,
+				height:20
+			},
+			this.topArrow={
+				leftX:this.len.left-this.Arrow.width/2,
+				leftY:this.len.top+this.Arrow.height,
+				rightX:this.len.left+this.Arrow.width/2,
+				rightY:this.len.top+this.Arrow.height,
+
+				centerX:this.len.left,
+				centerY:this.len.top+this.Arrow.height/2
+			},
+			this.bottomArrow={
+				topX:this.rightBottom.x-this.Arrow.height,
+				topY:this.rightBottom.y-this.Arrow.width/2,
+				bottomX:this.rightBottom.x-this.Arrow.height,
+				bottomY:this.rightBottom.y+this.Arrow.width/2,
+
+				centerX:this.rightBottom.x-this.Arrow.height/2,
+				centerY:cvs.height-this.len.bottom
+			}
+
+		}
+		Coordinate.prototype={
+			constructor:Coordinate,
+			line:function(ctx){
+				ctx.moveTo(this.leftTop.x,this.leftTop.y);
+				ctx.lineTo(this.point.x,this.point.y);
+				ctx.lineTo(this.rightBottom.x,this.rightBottom.y);
+				ctx.stroke();
+			},
+			topHorn:function(ctx){
+				ctx.beginPath();
+				ctx.moveTo(this.topArrow.leftX,this.topArrow.leftY);
+				ctx.lineTo(this.leftTop.x,this.leftTop.y);
+				ctx.lineTo(this.topArrow.rightX,this.topArrow.rightY);
+				ctx.lineTo(this.topArrow.centerX,this.topArrow.centerY);
+				ctx.fill();
+			},
+			bottomHorn:function(ctx){
+				ctx.beginPath();
+				ctx.moveTo(this.bottomArrow.topX,this.bottomArrow.topY);
+				ctx.lineTo(this.rightBottom.x,this.rightBottom.y);
+				ctx.lineTo(this.bottomArrow.bottomX,this.bottomArrow.bottomY);
+				ctx.lineTo(this.bottomArrow.centerX,this.bottomArrow.centerY);
+				ctx.fill();
+			}
+		}
+		var my=new Coordinate();
+		my.line(ctx);
+		my.topHorn(ctx);
+		my.bottomHorn(ctx);
+		
+	</script>
+</body>
+</html>

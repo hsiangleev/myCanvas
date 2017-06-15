@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="can" width="500" height="500"></canvas>
+
+	<script>
+		var cvs=document.getElementById("can");
+		var ctx=cvs.getContext("2d");
+		ctx.beginPath();
+		ctx.moveTo(20,20);
+		ctx.lineTo(20,480);
+		ctx.lineTo(480,480);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(10,30);
+		ctx.lineTo(20,20);
+		ctx.lineTo(30,30);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(470,490);
+		ctx.lineTo(480,480);
+		ctx.lineTo(470,470);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		ctx.fillRect(45,305,10,10);
+
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		ctx.fillRect(125,385,10,10);
+
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		ctx.fillRect(215,185,10,10);
+
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		ctx.fillRect(425,425,10,10);
+
+		ctx.beginPath();
+		ctx.strokeStyle="red";
+		ctx.moveTo(50,310);
+		ctx.lineTo(130,390);
+		ctx.lineTo(220,190);
+		ctx.lineTo(430,430);
+		ctx.stroke();
+
+		// ctx.beginPath();
+		// for (var i=0;i<6;i++){
+		// 	for (var j=0;j<6;j++){
+		// 		ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
+		// 			Math.floor(255-42.5*j) + ',0)';
+		// 		ctx.fillRect(j*25,i*25,25,25);
+		// 	}
+		// }
+	</script>
+
+</body>
+</html>
