@@ -28,12 +28,12 @@
 		var r=150;
 		var star=-Math.PI/2;
 		var color=["red","blue","green","yellow","pink"];
-		var step=Math.PI*2/color.length;	//步长
+		var step=Math.PI*2/color.length;
 
-		for (var i = 0; i < color.length; i++) {
+		for(var i=0;i<color.length;i++){
 			ctx.beginPath();
-			ctx.fillStyle=color[i];
 			ctx.moveTo(x,y);
+			ctx.fillStyle=color[i];
 			ctx.arc(x,y,r,star+step*i,star+step*(i+1));
 			ctx.fill();
 		}
