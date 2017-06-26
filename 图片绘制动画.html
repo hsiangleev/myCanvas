@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		var img = new Image();
+		img.src='images/2.png';
+		var i=0;
+		var j=0;
+		var step=0;
+		img.onload=function () {
+			var w=img.width/4;
+			var h=img.height/4;
+			var timer=null;
+			timer=setInterval(function () {
+				i=(i+1)%4;
+				j=(j+1)%4;
+				step=step+20;
+				var point=500-step;
+				if(point==-w*2){
+					step=0;
+				}
+				ctx.clearRect(0,0,500,500);
+				ctx.drawImage(img,w*i,h,w,h,point,h*2,w*2,h*2);
+				
+			},200);
+		}
+		
+	</script>
+</body>
+</html>

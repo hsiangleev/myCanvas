@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		ctx.strokeRect(100,100,200,200);
+		ctx.font="30px 黑体";
+		ctx.textAlign="right";
+		ctx.strokeText("哈哈啦",100,150);
+		// ctx.fillText("哈哈哈",150,150);
+	</script>
+</body>
+</html>

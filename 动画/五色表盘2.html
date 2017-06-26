@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		ctx.translate(250,250);
+
+		//定义color数组
+		function colorArr() {
+			var color=[];
+			for(var i=0;i<256;i++){
+				color.push("255,"+i+",0");	//255,0,0--255,255,0
+			}
+			for(var i=255;i>=0;i--){
+				color.push(i+",255,0");		//255,255,0--0,255,0
+			}
+			for(var i=0;i<256;i++){
+				color.push("0,255,"+i);		//0,255,0--0,255,255
+			}
+			for(var i=255;i>=0;i--){
+				color.push("0,"+i+",255");	//0,255,255--0,0,255
+			}
+			for(var i=0;i<256;i++){
+				color.push(i+",0,255");		//0,0,255--255,0,255
+			}
+			for(var i=255;i>=0;i--){
+				color.push("255,0,"+i);		//255,0,255--255,0,0
+			}
+			return color;
+		}
+		var color=colorArr();
+		var radius=2*Math.PI/color.length;
+		for (var i = 0; i < color.length; i++) {
+			ctx.beginPath();
+			var k="rgb("+color[i]+")";
+			ctx.fillStyle=k;
+			ctx.moveTo(0,0);
+			ctx.arc(0,0,200,-Math.PI/2+radius*i,-Math.PI/2+radius*(i+1));
+			ctx.fill();
+			// console.log(k);
+		}
+		
+	</script>
+</body>
+</html>

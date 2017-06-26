@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var div=document.querySelector("div");
+		function getColor() {
+			var colorEle="0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f";
+			var arr=colorEle.split(",");
+			var color="#";
+			for(var i=0;i<6;i++){
+				color+=arr[Math.floor(Math.random()*16)];
+			}
+			return color;
+		}
+		div.style.background=getColor();
+		console.log(getColor());
+	</script>
+</body>
+</html>

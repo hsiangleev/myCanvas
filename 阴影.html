@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		ctx.shadowOffsetX=5;
+		ctx.shadowOffsetY=8;
+		ctx.shadowBlur=6;
+		ctx.shadowColor="red";
+
+		ctx.fillRect(200,200,100,100);
+	</script>
+</body>
+</html>

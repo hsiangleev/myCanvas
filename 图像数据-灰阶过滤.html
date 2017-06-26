@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg" id="img1" alt="">
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+		var img=document.getElementById("img1");
+
+		// ctx.rect(10, 10, 100, 100);
+		// ctx.fill();
+
+		// console.log(ctx.getImageData(50, 50, 100, 100));
+
+		// var red,green,blue,alpha,val,imageData;
+		
+		img.onload=function () {
+			ctx.drawImage(img,0,0);
+			var data=ctx.getImageData(10, 10, 100, 100);
+			console.log(data);
+		}
+		
+		// imageData=ctx.getImageData(0,0,500,500)
+		// var data=imageData.data;
+		// for (var i = 0; i < data.length; i+=4) {
+		// 	red=data[i];
+		// 	green=data[i+1];
+		// 	blue=data[i+2];
+		// 	alpha=data[i+3];
+		// 	val=Math.floor((red+green+blue)/3);
+
+		// 	data[i]=val;
+		// 	data[i+1]=val;
+		// 	data[i+2]=val;
+		// }
+		// console.log(imageData);
+		// imageData.data=data;
+		// ctx.putImageData(imageData,0,0);
+		
+	</script>
+</body>
+</html>

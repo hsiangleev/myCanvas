@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+
+	<img id="img1" alt="">
+
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var img=document.getElementById("img1");
+		if(cvs.getContext("2d")){
+			var ctx=cvs.getContext("2d");
+			//外圆
+			ctx.arc(250,250,250,0,2*Math.PI);
+			//内圆
+			ctx.moveTo(490,250);
+			ctx.arc(250,250,240,0,2*Math.PI);
+			ctx.stroke();
+			//文字
+			ctx.font = 'bold 14px solid';
+			ctx.textAlign="center";
+			ctx.textBaseline="middle";
+			ctx.fillText(12,250,20);
+			//变换原点
+			ctx.translate(250,250);
+			ctx.rotate(30/360*2*Math.PI);
+			ctx.moveTo(0,0);
+			ctx.lineTo(0,-220);
+			ctx.moveTo(0,0);
+			ctx.lineTo(-210,0);
+
+			ctx.stroke();
+
+			//图片保存
+			img.src=cvs.toDataURL("image/png",1);
+		}
+			
+		
+	</script>
+</body>
+</html>

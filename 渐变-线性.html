@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		var gradient=ctx.createLinearGradient(0,0,200,100);
+		gradient.addColorStop(0,"red");
+		gradient.addColorStop(0.5,"blue");
+		gradient.addColorStop(1,"green");
+
+		//矩形
+		ctx.fillStyle=gradient;
+		ctx.fillRect(0,0,200,100);
+	</script>
+</body>
+</html>

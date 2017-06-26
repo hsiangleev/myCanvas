@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		function drawPath(x,y,r,n) {
+			ctx.save();
+			var angle=2*Math.PI/n;
+			ctx.translate(x,y);
+			ctx.moveTo(0,-r);
+			ctx.beginPath();
+			for (var i = 0; i < n; i++) {
+				ctx.rotate(angle);
+				ctx.lineTo(0,-r);
+			}
+			ctx.closePath();
+			ctx.stroke();
+			ctx.restore();	//返回到初始状态
+		}
+		drawPath(250,250,100,6);
+		drawPath(100,100,50,7);
+	</script>
+</body>
+</html>

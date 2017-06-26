@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="300" height="400"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+		//坐标系
+		// ctx.moveTo(cvs.width/2,0);
+		// ctx.strokeStyle="red";
+		// ctx.lineTo(cvs.width/2,cvs.height);
+		// ctx.moveTo(0,cvs.height/2);
+		// ctx.lineTo(cvs.width,cvs.height/2);
+		// ctx.stroke();
+
+		// var width=240;
+		// var height=160;
+		// // var r=30;
+		// console.log(cvs.width/2);
+		function RadiusRect(ctx,width,height,r,color) {
+			this.ctx=ctx;
+			this.width=width;
+			this.height=height;
+			this.r=r;
+			this.ctx.strokeStyle=color || "red"; 
+		}
+		RadiusRect.prototype={
+			constructor: RadiusRect,
+			line:function () {
+				//上边线
+				this.ctx.moveTo(cvs.width/2-this.width/2,cvs.height/2-this.height/2-this.r);
+				this.ctx.lineTo(cvs.width/2+this.width/2,cvs.height/2-this.height/2-this.r);
+				//下边线
+				this.ctx.moveTo(cvs.width/2-this.width/2,cvs.height/2+this.height/2+this.r);
+				this.ctx.lineTo(cvs.width/2+this.width/2,cvs.height/2+this.height/2+this.r);
+				//左边线
+				this.ctx.moveTo(cvs.width/2-this.width/2-this.r,cvs.height/2-this.height/2);
+				this.ctx.lineTo(cvs.width/2-this.width/2-this.r,cvs.height/2+this.height/2);
+				//右边线
+				this.ctx.moveTo(cvs.width/2+this.width/2+this.r,cvs.height/2-this.height/2);
+				this.ctx.lineTo(cvs.width/2+this.width/2+this.r,cvs.height/2+this.height/2);
+
+				this.ctx.stroke();
+			},
+			radius:function () {
+				this.ctx.beginPath();
+				//左上角
+				this.ctx.moveTo(cvs.width/2-this.width/2,cvs.height/2-this.height/2-this.r);
+				this.ctx.arcTo(cvs.width/2-this.width/2-this.r,cvs.height/2-this.height/2-this.r,cvs.width/2-this.width/2-this.r,cvs.height/2-this.height/2,this.r);
+				//右上角
+				this.ctx.moveTo(cvs.width/2+this.width/2,cvs.height/2-this.height/2-this.r);
+				this.ctx.arcTo(cvs.width/2+this.width/2+this.r,cvs.height/2-this.height/2-this.r,cvs.width/2+this.width/2+this.r,cvs.height/2-this.height/2,this.r);
+				//右下角
+				this.ctx.moveTo(cvs.width/2+this.width/2+this.r,cvs.height/2+this.height/2);
+				this.ctx.arcTo(cvs.width/2+this.width/2+this.r,cvs.height/2+this.height/2+this.r,cvs.width/2+this.width/2,cvs.height/2+this.height/2+this.r,this.r);
+				//左下角
+				this.ctx.moveTo(cvs.width/2-this.width/2-this.r,cvs.height/2+this.height/2);
+				this.ctx.arcTo(cvs.width/2-this.width/2-this.r,cvs.height/2+this.height/2+this.r,cvs.width/2-this.width/2,cvs.height/2+this.height/2+this.r,this.r);
+				this.ctx.stroke();
+			}
+		};
+
+		var k=new RadiusRect(ctx,200,160,20,"blue");
+		k.line();
+		k.radius();
+	</script>
+</body>
+</html>

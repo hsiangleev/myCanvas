@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+
+		var url = 'images/1.jpg';
+		var img = new Image();
+		img.src=url;
+		img.onload=function () {
+			ctx.drawImage(img,0,0,300, 300,100,100,300,300);
+		}
+	</script>
+</body>
+</html>

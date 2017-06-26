@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500"></canvas>
+	<script>
+		var cvs=document.getElementById("cvs");
+		var ctx=cvs.getContext("2d");
+		ctx.translate(250,250);
+
+		/** 扇叶函数
+		*	x,y,color:渐变起始坐标和起始颜色
+		*	a,b,starAngle,endAngle：圆心坐标和起始结束角度
+		**/
+		function windCar(x,y,color,a,b,starAngle,endAngle) {
+			ctx.beginPath();
+			ctx.save();
+			var gradient=ctx.createLinearGradient(x,y,0,0);
+			gradient.addColorStop(0,color);
+			gradient.addColorStop(1,"black");
+			ctx.moveTo(0,0);
+			ctx.fillStyle=gradient;
+			ctx.arc(a,b,100,starAngle,endAngle);	//0,-100,100,-Math.PI/2,Math.PI/2
+			ctx.fill();
+			ctx.restore();
+		}
+		windCar(0,-200,"red",0,-100,-Math.PI/2,Math.PI/2);
+		windCar(200,0,"green",100,0,0,Math.PI);
+		windCar(0,200,"blue",0,100,Math.PI/2,Math.PI/2*3);
+		windCar(-200,0,"yellow",-100,0,Math.PI,0);
+
+		//中心原
+		ctx.beginPath();
+		var oGradient=ctx.createRadialGradient(0,0,0,0,0,50);
+		oGradient.addColorStop(0,"#fff");
+		oGradient.addColorStop(1,"#666");
+		ctx.fillStyle=oGradient;
+		ctx.arc(0,0,50,0,2*Math.PI);
+		ctx.fill();
+
+		setInterval(function () {
+			ctx.clearRect(-250,-250,500,500);
+			ctx.rotate(5/360*Math.PI);
+			windCar(0,-200,"red",0,-100,-Math.PI/2,Math.PI/2);
+			windCar(200,0,"green",100,0,0,Math.PI);
+			windCar(0,200,"blue",0,100,Math.PI/2,Math.PI/2*3);
+			windCar(-200,0,"yellow",-100,0,Math.PI,0);
+
+			//中心原
+			ctx.beginPath();
+			var oGradient=ctx.createRadialGradient(0,0,0,0,0,50);
+			oGradient.addColorStop(0,"#fff");
+			oGradient.addColorStop(1,"#666");
+			ctx.fillStyle=oGradient;
+			ctx.arc(0,0,50,0,2*Math.PI);
+			ctx.fill();
+		},20);
+	</script>
+</body>
+</html>
