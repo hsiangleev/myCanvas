@@ -1,5 +1,4 @@
-# myCanvas
-###简易贪吃蛇实现思路：<br>
+# 简易贪吃蛇实现思路：<br>
 1.沙箱模式封装图片加载函数，对外暴露loadImg(imgUrl,Fn)函数，
 其中imgUrl为图片地址（对象），Fn为回调函数。<br>
 2.创建整个游戏函数，封装为DrawSnake，单例模式对外暴露DrawSnake（）<br>
